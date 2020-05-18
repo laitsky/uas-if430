@@ -27,7 +27,6 @@
                             } elseif ($pdp['is_read'] == 1 && $pdp['is_accepted'] == 0) {
                                 echo '<span class="ml-2 badge badge-danger">Ditolak</span>';
                             }
-
                             ?>
                         </td>
                         <td>

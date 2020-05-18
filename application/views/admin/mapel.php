@@ -1,4 +1,5 @@
 <div class="container">
+    <?= $this->session->flashdata('message'); ?>
     <h4>Mata pelajaran yang diikuti oleh siswa ini:</h4>
     <?php foreach ($siswa_mapel as $sm) : ?>
         <h6><?= $sm['nama_mapel'] . " (Pengampu: " . $sm['pengampu'] . ")"; ?></h6>

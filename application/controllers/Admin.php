@@ -6,7 +6,10 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        auth_guard();
+        admin_guard();
         $this->load->model('Admin_model', 'admin');
+        $this->load->model('Mapel_model', 'mapel');
     }
 
     public function index()
@@ -112,7 +115,7 @@ class Admin extends CI_Controller
 
     public function hapus_guru($id_guru)
     {
-        $this->admin->hapus_guru($id_guru);
+        $this->admin->delete_guru($id_guru);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hapus guru berhasil!</div>');
         redirect('admin/daftar_guru');
     }
@@ -123,7 +126,7 @@ class Admin extends CI_Controller
         $data['siswa'] = $this->admin->get_siswa_by_id($id_siswa);
 
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[user.email]');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'trim|required');
         $this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
@@ -252,7 +255,7 @@ class Admin extends CI_Controller
     public function daftar_mapel()
     {
         $data['title'] = "Daftar Mata Pelajaran";
-        $data['mapel'] = $this->admin->get_all_mapel();
+        $data['mapel'] = $this->mapel->get_all_mapel();
 
         $this->load->view('templates/panel_header', $data);
         $this->load->view('admin/daftar_mapel', $data);
@@ -262,7 +265,7 @@ class Admin extends CI_Controller
     public function tambah_guru_mapel($id_guru)
     {
         $data['title'] = "Tambah Guru Mapel";
-        $data['mapel'] = $this->admin->get_all_mapel();
+        $data['mapel'] = $this->mapel->get_mapel_list();
 
         $this->form_validation->set_rules('nama_mapel', 'Nama Mata Pelajaran', 'required');
 
@@ -271,7 +274,7 @@ class Admin extends CI_Controller
             $this->load->view('admin/tambah_guru_mapel', $data);
             $this->load->view('templates/panel_footer');
         } else {
-            $this->admin->tambah_guru_mapel($id_guru);
+            $this->mapel->tambah_guru_mapel($id_guru);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil mengkaitkan guru dengan mapel!</div>');
             redirect('admin/daftar_guru');
         }
@@ -280,8 +283,8 @@ class Admin extends CI_Controller
     public function mapel($id_siswa)
     {
         $data['title'] = "Mata Pelajaran";
-        $data['mapel'] = $this->admin->get_guru_mapel();
-        $data['siswa_mapel'] = $this->admin->get_siswa_mapel($id_siswa);
+        $data['mapel'] = $this->mapel->get_guru_mapel();
+        $data['siswa_mapel'] = $this->mapel->get_siswa_mapel($id_siswa);
 
         $this->form_validation->set_rules('nama_mapel', 'Nama Mata Pelajaran', 'required');
 
@@ -290,8 +293,7 @@ class Admin extends CI_Controller
             $this->load->view('admin/mapel', $data);
             $this->load->view('templates/panel_footer');
         } else {
-            $mapel = $this->input->post('nama_mapel');
-            $this->db->insert('siswa_guru_mapel', ['id_siswa' => $id_siswa, 'id_guru_mapel' => $mapel]);
+            $this->mapel->tambah_siswa_mapel($id_siswa);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil menambahkan mapel ke siswa!</div>');
             redirect('admin/daftar_siswa');
         }
@@ -300,7 +302,7 @@ class Admin extends CI_Controller
     public function detail_mapel($id_guru_mapel)
     {
         $data['title'] = "Detail Mata Pelajaran";
-        $data['detail_mapel'] = $this->admin->get_detail_mapel($id_guru_mapel);
+        $data['detail_mapel'] = $this->mapel->get_detail_mapel($id_guru_mapel);
 
         $this->load->view('templates/panel_header', $data);
         $this->load->view('admin/detail_mapel', $data);
