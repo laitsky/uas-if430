@@ -1,10 +1,11 @@
 <div class="bg-orange-400 h-full py-3">
     <?php if ($pdp_data['is_read'] == 1) : ?>
-        <div class="alert alert-success col-lg-6 offset-lg-3" role="alert">
-            Kamu sudah menerima/menolak permintaan ini.
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 container" role="alert">
+            <p class="font-bold">Perhatian</p>
+            <p>Kamu sudah menerima/menolak permintaan ini.</p>
         </div>
     <?php endif; ?>
-    <p class="text-center text-4xl font-semibold">Pengajuan Data Profil Guru</p>
+    <p class="text-center text-4xl font-semibold py-4 text-gray-700">Pengajuan Data Profil Guru</p>
     <div class="container bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 840px;">
         <form method="POST">
             <input type="hidden" class="form-control" name="id_guru" value="<?= $pdp_data['id_guru']; ?>">

@@ -40,7 +40,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->admin->tambah_guru();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tambah guru berhasil!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Tambah guru berhasil!</p></div>');
             redirect('admin/tambah_guru');
         }
     }
@@ -64,7 +64,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->admin->tambah_siswa();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tambah siswa berhasil!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Tambah siswa berhasil!</p></div>');
             redirect('admin/tambah_siswa');
         }
     }
@@ -108,7 +108,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->admin->update_guru();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Update guru berhasil!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Update guru berhasil!</p></div>');
             redirect('admin/daftar_guru');
         }
     }
@@ -126,7 +126,7 @@ class Admin extends CI_Controller
         $data['siswa'] = $this->admin->get_siswa_by_id($id_siswa);
 
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[user.email]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'trim|required');
         $this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
@@ -140,7 +140,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->admin->update_siswa();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Update siswa berhasil!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Update siswa berhasil!</p></div>');
             redirect('admin/daftar_siswa');
         }
     }
@@ -148,7 +148,7 @@ class Admin extends CI_Controller
     public function hapus_siswa($id_siswa) 
     {
         $this->admin->delete_siswa($id_siswa);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hapus siswa berhasil!</div>');
+        $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Hapus siswa berhasil!</p></div>');
         redirect('admin/daftar_siswa');
     }
 
@@ -183,7 +183,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->admin->terima_pdpg();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengajuan Penggantian Data Profil Diterima!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Pengajuan penggantian data profil diterima!</p></div>');
             redirect('admin/daftar_pdp');
         }
     }
@@ -208,7 +208,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->admin->terima_pdps();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengajuan Penggantian Data Profil Diterima!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Pengajuan penggantian data profil diterima!</p></div>');
             redirect('admin/daftar_pdp');
         }
     }
@@ -220,7 +220,7 @@ class Admin extends CI_Controller
         ];
 
         $this->db->update('pengajuan_data_profil_guru', $data, ['id' => $pdpg_id]);
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pengajuan Penggantian Data Profil Ditolak!</div>');
+        $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Pengajuan penggantian data profil ditolak!</p></div>');
         redirect('admin/daftar_pdp');
     }
 
@@ -231,7 +231,7 @@ class Admin extends CI_Controller
         ];
 
         $this->db->update('pengajuan_data_profil_siswa', $data, ['id' => $pdps_id]);
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pengajuan Penggantian Data Profil Ditolak!</div>');
+        $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Pengajuan penggantian data profil ditolak!</p></div>');
         redirect('admin/daftar_pdp');
     }
 
@@ -247,7 +247,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->mapel->tambah_mapel();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Mata pelajaran berhasil ditambahkan!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Mata pelajaran berhasil ditambahkan!</p></div>');
             redirect('admin/tambah_mapel');
         }
     }
@@ -275,7 +275,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->mapel->tambah_guru_mapel($id_guru);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil mengkaitkan guru dengan mapel!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Berhasil mengkaitkan guru dengan mapel!</p></div>');
             redirect('admin/daftar_guru');
         }
     }
@@ -294,7 +294,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->mapel->tambah_siswa_mapel($id_siswa);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil menambahkan mapel ke siswa!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Berhasil menambahkan mapel ke siswa!</p></div>');
             redirect('admin/daftar_siswa');
         }
     }
@@ -303,7 +303,8 @@ class Admin extends CI_Controller
     {
         $data['title'] = "Detail Mata Pelajaran";
         $data['detail_mapel'] = $this->mapel->get_detail_mapel($id_guru_mapel);
-
+        $data['guru'] = $this->mapel->get_guru_mapel_by_id($id_guru_mapel);
+        
         $this->load->view('templates/panel_header', $data);
         $this->load->view('admin/detail_mapel', $data);
         $this->load->view('templates/panel_footer');
@@ -322,7 +323,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/panel_footer');
         } else {
             $this->mapel->sunting_mapel();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil mengubah nama mapel!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Berhasil mengubah nama mata pelajaran!</p></div>');
             redirect('admin/tambah_mapel');
         }
     }
@@ -331,14 +332,14 @@ class Admin extends CI_Controller
     {
         $this->db->delete('mata_pelajaran', ['id_mapel' => $id_mapel]);
         $this->db->delete('guru_mapel', ['id_mapel' => $id_mapel]);
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Berhasil menghapus mata pelajaran!</div>');
+        $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Berhasil menghapus mata pelajaran!</p></div>');
         redirect('admin/tambah_mapel');
     }
 
     public function hapus_guru_mapel($id_guru_mapel)
     {
         $this->db->delete('guru_mapel', ['id_guru_mapel' => $id_guru_mapel]);
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Berhasil menghapus mata pelajaran dan guru!</div>');
+        $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Berhasil menghapus guru dan mata pelajaran!</p></div>');
         redirect('admin/daftar_mapel');
     }
     public function cari_siswa()

@@ -50,7 +50,7 @@ class Guru extends CI_Controller
             $this->load->view('templates/guru_footer');
         } else {
             $this->guru->req_ganti_data();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengajuan penggantian data profil berhasil!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Pengajuan penggantian data profil berhasil!</p></div>');
             redirect('guru/profil');
         }
     }
@@ -80,7 +80,7 @@ class Guru extends CI_Controller
             $this->load->view('templates/guru_footer');
         } else {
             $this->guru->insert_nilai_siswa($id_sgm);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil memasukkan nilai!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Berhasil memasukkan nilai!</p></div>');
             redirect("guru/nilai_siswa/$id_sgm");
         }
     }
@@ -109,14 +109,14 @@ class Guru extends CI_Controller
     public function terima_pn($id_pn)
     {
         $this->guru->terima_pn($id_pn);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil menerima peninjauan nilai!</div>');
+        $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Kamu telah berhasil menerima peninjauan nilai siswa!</p></div>');
         redirect("guru/daftar_pn");
     }
 
     public function tolak_pn($id_pn)
     {
         $this->guru->tolak_pn($id_pn);
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Berhasil menolak peninjauan nilai!</div>');
+        $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Kamu berhasil menolak peninjauan nilai siswa!</p></div>');
         redirect("guru/daftar_pn");
     }
 

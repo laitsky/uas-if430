@@ -1,18 +1,26 @@
-<div class="container my-3">
-    <?= $this->session->flashdata('message'); ?>
-    <p class="text-center text-gray-700 text-4xl font-semibold">Tambah Mata Pelajaran</p>
-    <form action="" method="POST">
-        <div class="form-group">
-            <input class="shadow-lg bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="text" id="nama_mapel" name="nama_mapel" placeholder="Tambah mata pelajaran...">
-            <?= form_error('nama_mapel', '<small class="form-text text-danger">', '</small>'); ?>
+<div class="bg-gray-100 h-screen py-8">
+    <!-- Button trigger modal -->
+    <button type="button" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full mb-4 btn-block container" style="max-width: 840px;" data-toggle="modal" data-target="#mapelListModal">
+        <span class="font-light">Lihat mata pelajaran yang sudah ada</span>
+    </button>
+    <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 840px;">
+        <div class="container">
+            <?= $this->session->flashdata('message'); ?>
         </div>
-        <button class="btn btn-block btn-primary">Tambah mata pelajaran</button>
-    </form>
+        <p class="text-center text-gray-700 text-4xl font-semibold mb-4">Tambah Mata Pelajaran</p>
+        <form action="" method="POST">
+            <div class="form-group">
+                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500" type="text" id="nama_mapel" name="nama_mapel" placeholder="Tambah mata pelajaran...">
+                <?= form_error('nama_mapel', '<small class="form-text text-danger">', '</small>'); ?>
+            </div>
+            <div class="flex justify-end">
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Tambah mata pelajaran</button>
+            </div>
+        </form>
+    </div>
+
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapelListModal">
-    Lihat mata pelajaran yang sudah ada
-</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="mapelListModal" tabindex="-1" role="dialog" aria-labelledby="mapelListModalLabel" aria-hidden="true">
@@ -50,8 +58,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

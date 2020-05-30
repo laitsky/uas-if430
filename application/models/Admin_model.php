@@ -101,6 +101,18 @@ class Admin_model extends CI_Model
         $id_user = $this->db->get_where('guru', ['id_guru' => $id_guru])->row_array()['id_user'];
         $this->db->delete('guru', ['id_guru' => $id_guru]);
         $this->db->delete('user', ['id' => $id_user]);
+        $this->db->delete('guru_mapel', ['id_guru' => $id_guru]);
+        $this->db->delete('pengajuan_data_profil_guru', ['id_guru' => $id_guru]);
+        $q1 = "DELETE FROM siswa_guru_mapel
+                WHERE id_guru_mapel IN (SELECT guru_mapel.id_guru_mapel
+                                        FROM guru_mapel
+                                        WHERE guru_mapel.id_guru = $id_guru)";
+        $q2 = "DELETE FROM peninjauan_nilai
+                WHERE id_guru_mapel IN (SELECT guru_mapel.id_guru_mapel
+                                        FROM guru_mapel
+                                        WHERE guru_mapel.id_guru = $id_guru)";
+        $this->db->query($q1);
+        $this->db->query($q2);
     }
 
     public function update_siswa()
@@ -127,6 +139,9 @@ class Admin_model extends CI_Model
         $id_user = $this->db->get_where('siswa', ['id_siswa' => $id_siswa])->row_array()['id_user'];
         $this->db->delete('siswa', ['id_siswa' => $id_siswa]);
         $this->db->delete('user', ['id' => $id_user]);
+        $this->db->delete('pengajuan_data_profil_siswa', ['id_siswa' => $id_siswa]);
+        $this->db->delete('siswa_guru_mapel', ['id_siswa' => $id_siswa]);
+        $this->db->delete('peninjauan_nilai', ['id_siswa' => $id_siswa]);
     }
 
     /* PDP adalah tabel pengajuan_data_profil_* */
@@ -256,7 +271,7 @@ class Admin_model extends CI_Model
         $this->db->update('pengajuan_data_profil_siswa', $status, ['id' => $id_pdps]);
     }
 
-    public function cari_siswa($keyword, $sort="ASC") 
+    public function cari_siswa($keyword, $sort = "ASC")
     {
         $q = "SELECT id_siswa, nama 
                 FROM siswa 
@@ -265,4 +280,5 @@ class Admin_model extends CI_Model
 
         return $this->db->query($q)->result_array();
     }
+
 }

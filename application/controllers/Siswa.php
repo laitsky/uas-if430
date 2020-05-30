@@ -51,7 +51,7 @@ class Siswa extends CI_Controller
             $this->load->view('templates/siswa_footer');
         } else {
             $this->siswa->req_ganti_data();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengajuan penggantian data profil berhasil!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Pengajuan penggantian data profil berhasil!</p></div>');
             redirect('siswa/profil');
         }
     }
@@ -79,7 +79,7 @@ class Siswa extends CI_Controller
             $this->load->view('templates/siswa_footer');
         } else {
             $this->siswa->send_peninjauan_nilai();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengajuan peninjauan nilai berhasil!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Pengajuan peninjauan nilai berhasil!</p></div>');
             redirect("siswa/detail_kelas/$id_sgm");
         }
     }

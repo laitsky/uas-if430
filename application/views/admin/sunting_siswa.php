@@ -1,9 +1,11 @@
 <div class="bg-gray-300 h-full py-8">
-    <?= $this->session->flashdata('message'); ?>
+    <div class="container">
+        <?= $this->session->flashdata('message'); ?>
+    </div>
     <p class="text-center text-gray-700 text-6xl font-semibold">Sunting Data Siswa</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 720px;">
         <form method="POST">
-        <input type="hidden" class="form-control" name="id" value="<?= $siswa['id_siswa']; ?>">
+            <input type="hidden" class="form-control" name="id" value="<?= $siswa['id_siswa']; ?>">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="nama">Nama</label>
                 <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="nama" name="nama" placeholder="Masukkan nama..." value="<?= $siswa['nama']; ?>">
@@ -47,7 +49,7 @@
                 <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="tahun_masuk" name="tahun_masuk" placeholder="Masukkan tahun masuk..." value="<?= $siswa['telp']; ?>">
                 <?= form_error('tahun_masuk', '<p class="text-red-500 text-xs italic mt-2">', '</p>'); ?>
             </div>
-            <button type="submit" class="btn btn-block btn-primary">Daftarkan siswa ini!</button>
+            <button type="submit" class="btn btn-block btn-primary">Sunting data siswa ini!</button>
         </form>
     </div>
 </div>

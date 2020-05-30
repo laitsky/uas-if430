@@ -1,5 +1,7 @@
 <div class="bg-gray-300 h-full py-8">
-    <?= $this->session->flashdata('message'); ?>
+    <div class="container">
+        <?= $this->session->flashdata('message'); ?>
+    </div>
     <p class="text-center text-gray-700 text-6xl font-semibold">Tambah Guru</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 720px;">
         <form method="POST">

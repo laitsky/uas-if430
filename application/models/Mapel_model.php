@@ -30,7 +30,7 @@ class Mapel_model extends CI_Model
         $has_duplicate = $this->db->query($chk_duplicate_query)->num_rows();
 
         if ($has_duplicate != 0) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Mata pelajaran sudah ada!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Mata pelajaran sudah ada!</p></div>');
             redirect('admin/tambah_mapel');
             exit();
         }
@@ -80,17 +80,26 @@ class Mapel_model extends CI_Model
 
     public function get_detail_mapel($id_guru_mapel)
     {
-        $q = "SELECT s.nama AS nama_siswa, g.nama AS nama_guru, m.nama_mapel
+        $q = "SELECT s.nama AS nama_siswa
                 FROM siswa_guru_mapel AS sgm
                 INNER JOIN siswa AS s ON sgm.id_siswa = s.id_siswa
                 INNER JOIN guru_mapel AS gm ON sgm.id_guru_mapel = gm.id_guru_mapel
-                INNER JOIN guru AS g ON gm.id_guru = g.id_guru
-                INNER JOIN mata_pelajaran AS m ON gm.id_mapel = m.id_mapel
-                WHERE gm.id_guru_mapel = " . $id_guru_mapel;
+                WHERE gm.id_guru_mapel = $id_guru_mapel
+                ORDER BY s.nama";
 
         return $this->db->query($q)->result_array();
     }
 
+    public function get_guru_mapel_by_id($id_guru_mapel) 
+    {
+        $q = "SELECT guru.nama, CONCAT(nama_mapel, ' ', kode_kelas) AS nama_kelas
+                FROM guru_mapel
+                INNER JOIN guru ON guru.id_guru = guru_mapel.id_guru
+                INNER JOIN mata_pelajaran ON mata_pelajaran.id_mapel = guru_mapel.id_mapel
+                WHERE guru_mapel.id_guru_mapel = $id_guru_mapel";
+
+        return $this->db->query($q)->row_array();
+    }
     public function tambah_siswa_mapel($id_siswa)
     {
         $mapel = $this->input->post('nama_mapel');
@@ -100,7 +109,7 @@ class Mapel_model extends CI_Model
         $has_duplicate = $this->db->query($chk_duplicate_query)->num_rows();
 
         if ($has_duplicate != 0) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Siswa ini sudah memilih mapel tersebut!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Siswa ini sudah memilih mapel tersebut!</p></div>');
             redirect('admin/mapel/' . $id_siswa);
             exit();
         }
@@ -137,10 +146,10 @@ class Mapel_model extends CI_Model
                                     FROM `guru_mapel`
                                     WHERE `id_guru` = " . $id_guru . " AND `id_mapel` = " . $mapel;
         $has_duplicate = $this->db->query($chk_duplicate_query)->num_rows();
-        $kode_kelas = ($this->lkk_count($mapel) == 0) ? 'A' : chr($last_kk + 1); 
+        $kode_kelas = ($this->lkk_count($mapel) == 0) ? 'A' : chr($last_kk + 1);
 
         if ($has_duplicate != 0) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Guru ini sudah memilih mapel tersebut!</div>');
+            $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Guru ini sudah memilih mapel tersebut!</p></div>');
             redirect('admin/tambah_guru_mapel/' . $id_guru);
             exit();
         }

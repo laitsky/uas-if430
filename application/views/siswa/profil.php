@@ -1,14 +1,16 @@
 <?php
-    if ($siswa['jenis_kelamin'] == 'L') {
-        $jenis_kelamin =  "Laki-laki";
-    } else {
-        $jenis_kelamin =  "Perempuan";
-    }
+if ($siswa['jenis_kelamin'] == 'L') {
+    $jenis_kelamin =  "Laki-laki";
+} else {
+    $jenis_kelamin =  "Perempuan";
+}
 ?>
 <div class="bg-orange-200 h-100 py-3">
     <p class="text-center text-6xl pt-5 font-semibold text-gray-700">Profil Saya</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 840px;">
-        <?= $this->session->flashdata('message'); ?>
+        <div class="container">
+            <?= $this->session->flashdata('message'); ?>
+        </div>
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/3">
                 <label class="block uppercase tracking-wide text-xs text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-nama">

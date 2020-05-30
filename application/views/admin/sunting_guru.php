@@ -1,5 +1,7 @@
 <div class="bg-gray-300 h-full py-8">
-    <?= $this->session->flashdata('message'); ?>
+    <div class="container">
+        <?= $this->session->flashdata('message'); ?>
+    </div>
     <p class="text-center text-gray-700 text-6xl font-semibold">Sunting Data Guru</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 720px;">
         <form method="POST">
@@ -42,7 +44,7 @@
                 <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="telepon" name="telepon" placeholder="Masukkan telepon..." value="<?= $guru['telp']; ?>">
                 <?= form_error('telepon', '<p class="text-red-500 text-xs italic mt-2">', '</p>'); ?>
             </div>
-            <button type="submit" class="btn btn-block btn-primary">Daftarkan guru ini!</button>
+            <button type="submit" class="btn btn-block btn-primary">Sunting data guru ini!</button>
         </form>
     </div>
 </div>

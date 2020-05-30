@@ -4,7 +4,9 @@ $nilai_uts = ($detail['nilai_uts'] == NULL) ? 0 : $detail['nilai_uts'];
 $nilai_uas = ($detail['nilai_uas'] == NULL) ? 0 : $detail['nilai_uas'];
 ?>
 <div class="bg-indigo-600 h-screen py-3">
-    <?= $this->session->flashdata('message'); ?>
+    <div class="container">
+        <?= $this->session->flashdata('message'); ?>
+    </div>
     <p class="text-center text-4xl font-semibold text-gray-100 block uppercase py-3"><?= $detail['nama_kelas']; ?></p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 840px;">
         <form action="" method="POST">

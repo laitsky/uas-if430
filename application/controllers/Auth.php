@@ -39,11 +39,11 @@ class Auth extends CI_Controller
                         redirect('auth');
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password kamu salah!</div>');
+                    $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Password yang kamu masukkan salah!</p></div>');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun kamu tidak terdaftar!</div>');
+                $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Akun kamu tidak terdaftar!</p></div>');
                 redirect('auth');
             }
         }
@@ -79,7 +79,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('role_id');
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kamu berhasil logout!</div>');
+        $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Kamu berhasil logout!</p></div>');
         redirect('auth');
     }
 }

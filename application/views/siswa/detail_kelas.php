@@ -5,10 +5,12 @@ $id_sgm = $this->uri->segment($this->uri->total_segments());
 ?>
 <div class="bg-green-200 h-screen py-3">
     <div class="container">
-        <?= $this->session->flashdata('message'); ?>
+        <div class="container">
+            <?= $this->session->flashdata('message'); ?>
+        </div>
         <div class="text-center">
-            <p class="text-4xl font-extrabold tracking-wide uppercase"><?= $nilai['nama_mapel']; ?></p>
-            <p class="text-xl font-medium">Guru Pengampu: <?= $nilai['nama_guru']; ?></p>
+            <p class="text-4xl font-extrabold tracking-wide uppercase text-gray-700"><?= $nilai['nama_mapel']; ?></p>
+            <p class="text-xl font-medium text-gray-600">Guru Pengampu: <?= $nilai['nama_guru']; ?></p>
             <hr>
         </div>
         <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 840px;">

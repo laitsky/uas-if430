@@ -1,15 +1,14 @@
-<div class="container">
-    <h2 class="text-center">Detail Mata Pelajaran</h2>
-    <?php if (!($detail_mapel)) : ?>
-<h3>Mata Pelajaran</h3>
-<h3>Guru pengampu</h3>
-    <?php else : ?>
-    <h3>Mata Pelajaran: <?= $detail_mapel[0]['nama_mapel']; ?></h3>
-    <h3>Guru Pengampu: <?= $detail_mapel[0]['nama_guru']; ?></h3>
-    <?php endif; ?>
-    <hr>
-    <ul>Daftar siswa yang mengikuti mata pelajaran ini:</ul>
-    <?php foreach ($detail_mapel as $dm) : ?>
-        <li><?= $dm['nama_siswa']; ?></li>
-    <?php endforeach; ?>
+<div class="bg-purple-300 h-full py-8">
+    <p class="text-center text-gray-700 text-4xl font-semibold">Detail Mata Pelajaran</p>
+    <p class="text-center text-gray-600 text-xl"><?= $guru['nama_kelas']; ?> - <?= $guru['nama']; ?></p>
+    <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 720px;">
+        <div class="text-center pb-4">
+            <p class="text-base font-bold">Daftar siswa yang mengikuti mata pelajaran ini:</p>
+        </div>
+        <ul class="list-group">
+            <?php foreach ($detail_mapel as $dm) : ?>
+                <li class="list-group-item"><?= $dm['nama_siswa']; ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 </div>

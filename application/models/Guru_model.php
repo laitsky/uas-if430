@@ -147,4 +147,5 @@ class Guru_model extends CI_Model {
 
         return $this->db->query($q)->result_array();
     }
+
 }

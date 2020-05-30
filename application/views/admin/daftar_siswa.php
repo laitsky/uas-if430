@@ -1,9 +1,11 @@
 <div class="bg-indigo-800 h-full py-8">
-    <?= $this->session->flashdata('message'); ?>
     <p class="text-center text-gray-100 text-4xl font-semibold">Daftar Siswa</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 1080px;">
+    <div class="container">
+        <?= $this->session->flashdata('message'); ?>
+    </div>
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-dt table-hover">
                 <thead>
                     <tr class="text-center">
                         <th scope="col">#</th>

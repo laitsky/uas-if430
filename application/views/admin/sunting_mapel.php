@@ -8,6 +8,8 @@
                 <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="nama_mapel" name="nama_mapel" placeholder="Masukkan nama_mapel..." value="<?= $mapel['nama_mapel']; ?>">
                 <?= form_error('nama_mapel', '<p class="text-red-500 text-xs italic mt-2">', '</p>'); ?>
             </div>
-            <button class="btn btn-primary">Ubah nama mapel</button>
+            <div class="flex justify-end">
+                <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Ubah nama mapel</button>
+            </div>
         </form>
     </div>

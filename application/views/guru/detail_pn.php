@@ -1,13 +1,16 @@
 <div class="bg-blue-400 h-full py-3">
-    <?= $this->session->flashdata('message'); ?>
+    <div class="container">
+        <?= $this->session->flashdata('message'); ?>
+    </div>
     <?php if ($detail['is_read'] == 1) : ?>
-        <div class="alert alert-info mt-3" role="alert">
-            Kamu sudah melakukan peninjauan nilai terhadap siswa ini!
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 container" role="alert">
+            <p class="font-bold">Perhatian</p>
+            <p>Kamu sudah melakukan peninjauan nilai terhadap siswa ini!</p>
         </div>
     <?php endif; ?>
     <div class="text-center">
-        <p class="text-4xl font-semibold">Peninjauan Nilai</p>
-        <p class="text-xl pb-3"><?= $detail['nama'] . " - " . $detail['nama_kelas']; ?></p>
+        <p class="text-4xl font-semibold text-white">Peninjauan Nilai</p>
+        <p class="text-xl pb-3 text-gray-300"><?= $detail['nama'] . " - " . $detail['nama_kelas']; ?></p>
     </div>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 840px;">
         <div class="form-group">
