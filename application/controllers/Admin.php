@@ -25,7 +25,7 @@ class Admin extends CI_Controller
     public function tambah_guru()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[user.email]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'trim|required');
@@ -48,7 +48,7 @@ class Admin extends CI_Controller
     public function tambah_siswa()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[user.email]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'trim|required');
@@ -116,7 +116,7 @@ class Admin extends CI_Controller
     public function hapus_guru($id_guru)
     {
         $this->admin->delete_guru($id_guru);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hapus guru berhasil!</div>');
+        $this->session->set_flashdata('message', '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Hapus guru berhasil!</p></div>');
         redirect('admin/daftar_guru');
     }
 

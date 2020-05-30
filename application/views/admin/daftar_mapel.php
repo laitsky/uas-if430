@@ -1,9 +1,9 @@
-<div class="bg-yellow-600 h-full py-8">
-    <div class="container">
-        <?= $this->session->flashdata('message'); ?>
-    </div>
+<div class="bg-yellow-600 h-screen py-8">
     <p class="text-center text-gray-100 text-6xl font-semibold">Daftar Guru & Mata Pelajaran</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 960px;">
+        <div class="container">
+            <?= $this->session->flashdata('message'); ?>
+        </div>
         <p class='italic pb-1 text-xs font-serif tracking-wide text-gray-700'>Agar mata pelajaran hadir di daftar ini, kamu harus mengaitkannya terlebih dahulu pada setting "kaitkan dengan mapel" di daftar guru.</p>
         <div class="table-responsive table-hover">
             <table class="table table-dt">

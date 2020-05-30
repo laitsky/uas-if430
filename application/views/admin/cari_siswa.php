@@ -1,4 +1,4 @@
-<div class="bg-orange-600 h-full py-8">
+<div class="bg-orange-600 h-screen py-8">
     <p class="text-center text-semibold text-4xl text-white">Pencarian Siswa</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 720px;">
         <?php if (empty($siswa)) : ?>

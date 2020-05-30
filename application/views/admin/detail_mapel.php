@@ -1,4 +1,4 @@
-<div class="bg-purple-300 h-full py-8">
+<div class="bg-purple-300 h-screen py-8">
     <p class="text-center text-gray-700 text-4xl font-semibold">Detail Mata Pelajaran</p>
     <p class="text-center text-gray-600 text-xl"><?= $guru['nama_kelas']; ?> - <?= $guru['nama']; ?></p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 720px;">

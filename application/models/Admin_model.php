@@ -81,6 +81,9 @@ class Admin_model extends CI_Model
     public function update_guru()
     {
         $id = $this->input->post('id');
+        $id_user = $this->db->get_where('guru', ['id_guru' => $id])->row_array()['id_user'];
+        $nama = htmlspecialchars($this->input->post('nama', true));
+        $email = htmlspecialchars($this->input->post('email', true));
 
         $data = [
             'nama' => htmlspecialchars($this->input->post('nama', true)),
@@ -93,6 +96,7 @@ class Admin_model extends CI_Model
         ];
 
         $this->db->update('guru', $data, ['id_guru' => $id]);
+        $this->db->update('user', ['nama' => $nama, 'email' => $email], ['id' => $id_user]);
     }
 
     public function delete_guru($id_guru)
@@ -118,7 +122,9 @@ class Admin_model extends CI_Model
     public function update_siswa()
     {
         $id = $this->input->post('id');
-
+        $id_user = $this->db->get_where('siswa', ['id_siswa' => $id])->row_array()['id_user'];
+        $nama = htmlspecialchars($this->input->post('nama', true));
+        $email = htmlspecialchars($this->input->post('email', true));
         $data = [
             'nama' => htmlspecialchars($this->input->post('nama', true)),
             'email' => htmlspecialchars($this->input->post('email', true)),
@@ -131,6 +137,7 @@ class Admin_model extends CI_Model
         ];
 
         $this->db->update('siswa', $data, ['id_siswa' => $id]);
+        $this->db->update('user', ['nama' => $nama, 'email' => $email], ['id' => $id_user]);
     }
 
     public function delete_siswa($id_siswa)

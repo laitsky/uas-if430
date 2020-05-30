@@ -18,7 +18,7 @@
             </select>
             <?= form_error('nama_mapel', '<small class="form-text text-danger">', '</small>'); ?>
         </div>
-        <button class="btn btn-primary btn-block">Kaitkan guru dengan mata pelajaran ini!</button>
+        <button class="btn btn-primary btn-block">Tambahkan siswa ke mapel ini!</button>
 </div>
 </form>
 </div>
