@@ -29,10 +29,11 @@ class Siswa_model extends CI_Model
 
     public function get_mapel_siswa($id_siswa)
     {
-        $q = "SELECT siswa_guru_mapel.id_sgm, mata_pelajaran.nama_mapel, guru_mapel.kode_kelas
+        $q = "SELECT siswa_guru_mapel.id_sgm, mata_pelajaran.nama_mapel, guru.nama, guru_mapel.kode_kelas
                 FROM siswa_guru_mapel
                 INNER JOIN guru_mapel ON guru_mapel.id_guru_mapel = siswa_guru_mapel.id_guru_mapel
                 INNER JOIN mata_pelajaran ON mata_pelajaran.id_mapel = guru_mapel.id_mapel
+                INNER JOIN guru ON guru.id_guru = guru_mapel.id_guru
                 WHERE id_siswa = " . $id_siswa;
 
         return $this->db->query($q)->result_array();

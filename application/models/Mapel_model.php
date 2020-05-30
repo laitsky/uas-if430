@@ -8,7 +8,7 @@ class Mapel_model extends CI_Model
      *  get_all_mapel() adalah get_mapel_list() menge-return
      *  daftar mata pelajaran MURNI tanpa kaitan dengan guru yang mengajar,
      *  sedangkan get_all_mapel meng-return daftar mata pelajaran dengan 
-     *  guru pengampunya.                                                */  
+     *  guru pengampunya.                                                */
 
 
     public function get_mapel_list()
@@ -16,9 +16,38 @@ class Mapel_model extends CI_Model
         return $this->db->get('mata_pelajaran')->result_array();
     }
 
+    public function get_mapel_by_id($id_mapel)
+    {
+        return $this->db->get_where('mata_pelajaran', ['id_mapel' => $id_mapel])->row_array();
+    }
+
+    public function tambah_mapel()
+    {
+        $nama_mapel = htmlspecialchars($this->input->post('nama_mapel', true));
+        $chk_duplicate_query = "SELECT nama_mapel
+                                    FROM mata_pelajaran
+                                    WHERE nama_mapel = '$nama_mapel'";
+        $has_duplicate = $this->db->query($chk_duplicate_query)->num_rows();
+
+        if ($has_duplicate != 0) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Mata pelajaran sudah ada!</div>');
+            redirect('admin/tambah_mapel');
+            exit();
+        }
+        $this->db->insert('mata_pelajaran', ['nama_mapel' => $nama_mapel]);
+    }
+
+    public function sunting_mapel()
+    {
+        $id_mapel = $this->input->post('id_mapel');
+        $nama_mapel = htmlspecialchars($this->input->post('nama_mapel', true));
+
+        $this->db->update('mata_pelajaran', ['nama_mapel' => $nama_mapel], ['id_mapel' => $id_mapel]);
+    }
+
     public function get_all_mapel()
     {
-        $q = "SELECT mata_pelajaran.id_mapel, guru.nama AS pengampu,  mata_pelajaran.nama_mapel, guru_mapel.id_guru_mapel
+        $q = "SELECT mata_pelajaran.id_mapel, guru.nama AS pengampu,  CONCAT(mata_pelajaran.nama_mapel, ' ', guru_mapel.kode_kelas) as nama_kelas, guru_mapel.id_guru_mapel
                 FROM guru_mapel, guru, mata_pelajaran
                 WHERE guru_mapel.id_guru = guru.id_guru
                 AND guru_mapel.id_mapel = mata_pelajaran.id_mapel";
@@ -62,7 +91,7 @@ class Mapel_model extends CI_Model
         return $this->db->query($q)->result_array();
     }
 
-    public function tambah_siswa_mapel($id_siswa) 
+    public function tambah_siswa_mapel($id_siswa)
     {
         $mapel = $this->input->post('nama_mapel');
         $chk_duplicate_query = "SELECT `id_siswa`, `id_guru_mapel`
@@ -80,13 +109,35 @@ class Mapel_model extends CI_Model
         $this->db->insert('siswa_guru_mapel', ['id_siswa' => $id_siswa, 'id_guru_mapel' => $mapel]);
     }
 
+    public function lkk($id_mapel) // untuk mengecek kode kelas terakhir yang digunakan saat proses tambah guru mapel.
+    {
+        $q = "SELECT kode_kelas
+                FROM guru_mapel
+                WHERE id_mapel = $id_mapel
+                ORDER BY kode_kelas DESC LIMIT 1";
+
+        return $this->db->query($q)->row_array();
+    }
+
+    public function lkk_count($id_mapel)
+    {
+        $q = "SELECT kode_kelas
+                FROM guru_mapel
+                WHERE id_mapel = $id_mapel
+                ORDER BY kode_kelas DESC";
+
+        return $this->db->query($q)->num_rows();
+    }
+
     public function tambah_guru_mapel($id_guru)
     {
         $mapel = $this->input->post('nama_mapel');
+        $last_kk = ord($this->lkk($mapel)['kode_kelas']); // menentukan kode kelas terakhir yang dipakai jika lkk_count != 0
         $chk_duplicate_query = "SELECT `id_guru`, `id_mapel`
                                     FROM `guru_mapel`
                                     WHERE `id_guru` = " . $id_guru . " AND `id_mapel` = " . $mapel;
         $has_duplicate = $this->db->query($chk_duplicate_query)->num_rows();
+        $kode_kelas = ($this->lkk_count($mapel) == 0) ? 'A' : chr($last_kk + 1); 
 
         if ($has_duplicate != 0) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Guru ini sudah memilih mapel tersebut!</div>');
@@ -94,6 +145,6 @@ class Mapel_model extends CI_Model
             exit();
         }
 
-        $this->db->insert('guru_mapel', ['id_guru' => $id_guru, 'id_mapel' => $mapel]);
+        $this->db->insert('guru_mapel', ['id_guru' => $id_guru, 'id_mapel' => $mapel, 'kode_kelas' => $kode_kelas]);
     }
 }

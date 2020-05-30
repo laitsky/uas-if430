@@ -1,27 +1,26 @@
 <div class="container">
-    <?= $this->session->flashdata('message'); ?>
-    <h1>Ini adalah halaman siswa</h1>
-    <a href="<?= base_url('siswa/profil'); ?>" class="btn btn-primary">Profil Saya</a>
-    <hr>
-    <h1>Mata Pelajaran:</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Mata Pelajaran</th>
-                <th scope="col">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($mapel as $k => $m) : ?>
-                <tr>
-                    <th scope="row"><?= $k + 1; ?></th>
-                    <td><?= $m['nama_mapel'] . " Kelas " . $m['kode_kelas']; ?></td>
-                    <td>
-                        <a href="<?= base_url('siswa/detail_kelas/') . $m['id_sgm']; ?>" class="btn btn-primary">Detail Kelas</a>
-                    </td>
-                </tr>
+    <div class="py-6">
+        <?= $this->session->flashdata('message'); ?>
+        <p class="text-5xl text-center">Mata Pelajaran</p>
+        <div class="row justify-center">
+            <?php foreach ($mapel as $m) : ?>
+                <div class="col-md-4">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2"><span class="block uppercase tracking-wider"><?= $m['nama_mapel']; ?></span></div>
+                            <p class="text-gray-700 text-base text-sm">
+                                Guru Pengampu: <?= $m['nama']; ?>
+                            </p>
+                        </div>
+                        <div class="px-6 py-1 pb-4">
+                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Kelas <?= $m['kode_kelas']; ?></span>
+                            <div class="flex justify-end">
+                                <a href="<?= base_url('siswa/detail_kelas/') . $m['id_sgm']; ?>" class="a-btn bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Detail Kelas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <?php endforeach; ?>
-        </tbody>
-    </table>
+        </div>
+    </div>
 </div>

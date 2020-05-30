@@ -238,6 +238,7 @@ class Admin extends CI_Controller
     public function tambah_mapel()
     {
         $data['title'] = "Tambah Mata Pelajaran";
+        $data['list_mapel'] = $this->mapel->get_mapel_list();
 
         $this->form_validation->set_rules('nama_mapel', 'Nama Mata Pelajaran', 'trim|required');
         if (!($this->form_validation->run())) {
@@ -245,10 +246,9 @@ class Admin extends CI_Controller
             $this->load->view('admin/tambah_mapel', $data);
             $this->load->view('templates/panel_footer');
         } else {
-            $nama_mapel = htmlspecialchars($this->input->post('nama_mapel', true));
-            $this->db->insert('mata_pelajaran', ['nama_mapel' => $nama_mapel]);
+            $this->mapel->tambah_mapel();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Mata pelajaran berhasil ditambahkan!</div>');
-            redirect('admin');
+            redirect('admin/tambah_mapel');
         }
     }
 
@@ -306,6 +306,48 @@ class Admin extends CI_Controller
 
         $this->load->view('templates/panel_header', $data);
         $this->load->view('admin/detail_mapel', $data);
+        $this->load->view('templates/panel_footer');
+    }
+
+    public function sunting_mapel($id_mapel)
+    {
+        $data['title'] = "Sunting Mata Pelajaran";
+        $data['mapel'] = $this->mapel->get_mapel_by_id($id_mapel);
+
+        $this->form_validation->set_rules('nama_mapel', 'Nama Mata Pelajaran', 'required|trim');
+
+        if (!$this->form_validation->run()) {
+            $this->load->view('templates/panel_header', $data);
+            $this->load->view('admin/sunting_mapel', $data);
+            $this->load->view('templates/panel_footer');
+        } else {
+            $this->mapel->sunting_mapel();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil mengubah nama mapel!</div>');
+            redirect('admin/tambah_mapel');
+        }
+    }
+
+    public function hapus_mapel($id_mapel) 
+    {
+        $this->db->delete('mata_pelajaran', ['id_mapel' => $id_mapel]);
+        $this->db->delete('guru_mapel', ['id_mapel' => $id_mapel]);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Berhasil menghapus mata pelajaran!</div>');
+        redirect('admin/tambah_mapel');
+    }
+
+    public function hapus_guru_mapel($id_guru_mapel)
+    {
+        $this->db->delete('guru_mapel', ['id_guru_mapel' => $id_guru_mapel]);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Berhasil menghapus mata pelajaran dan guru!</div>');
+        redirect('admin/daftar_mapel');
+    }
+    public function cari_siswa()
+    {
+        $data['title'] = "Cari Siswa";
+        $keyword = htmlspecialchars($this->input->post('keyword', true));
+        $data['siswa'] = $this->admin->cari_siswa($keyword);
+        $this->load->view('templates/panel_header', $data);
+        $this->load->view('admin/cari_siswa', $data);
         $this->load->view('templates/panel_footer');
     }
 }

@@ -59,6 +59,7 @@ class Guru extends CI_Controller
     {
         $data['title'] = "Detail Kelas";
         $data['detail'] = $this->guru->get_detail_kelas($id_guru_mapel);
+        $data['nama_kelas'] = $this->guru->get_nama_kelas($id_guru_mapel)['nama_kelas'];
 
         $this->load->view('templates/guru_header', $data);
         $this->load->view('guru/detail_kelas', $data);
@@ -69,7 +70,6 @@ class Guru extends CI_Controller
     {
         $data['title'] = "Nilai Siswa";
         $data['detail'] = $this->guru->get_nilai_siswa($id_sgm);
-
         $this->form_validation->set_rules('nilai_tugas', 'Nilai Tugas', 'trim|numeric|greater_than_equal_to[0]|less_than_equal_to[100]');
         $this->form_validation->set_rules('nilai_uts', 'Nilai UTS', 'trim|numeric|greater_than_equal_to[0]|less_than_equal_to[100]');
         $this->form_validation->set_rules('nilai_uas', 'Nilai UAS', 'trim|numeric|greater_than_equal_to[0]|less_than_equal_to[100]');
@@ -118,5 +118,17 @@ class Guru extends CI_Controller
         $this->guru->tolak_pn($id_pn);
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Berhasil menolak peninjauan nilai!</div>');
         redirect("guru/daftar_pn");
+    }
+
+    public function cari_siswa()
+    {
+        $id_guru = $this->guru->get_data_guru($this->session->userdata('user_id'))['id_guru'];
+        $keyword = htmlspecialchars($this->input->post('keyword', true));
+        $data['title'] = "Cari Siswa Ajar";
+        $data['siswa'] = $this->guru->cari_siswa($keyword, $id_guru);
+
+        $this->load->view('templates/guru_header', $data);
+        $this->load->view('guru/cari_siswa', $data);
+        $this->load->view('templates/guru_footer');
     }
 }

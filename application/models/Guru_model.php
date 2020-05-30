@@ -36,9 +36,18 @@ class Guru_model extends CI_Model {
         return $this->db->query($q)->result_array();
     }
 
+    public function get_nama_kelas($id_guru_mapel) 
+    {
+        $q = "SELECT CONCAT(mata_pelajaran.nama_mapel, ' ', guru_mapel.kode_kelas) as nama_kelas
+                FROM mata_pelajaran
+                INNER JOIN guru_mapel ON guru_mapel.id_mapel = mata_pelajaran.id_mapel
+                WHERE guru_mapel.id_guru_mapel = $id_guru_mapel";
+
+        return $this->db->query($q)->row_array();
+    }
     public function get_detail_kelas($id_guru_mapel)
     {
-        $q = "SELECT siswa.nama AS nama_siswa, siswa_guru_mapel.id_sgm  AS id_nilai_siswa
+        $q = "SELECT siswa.nama AS nama_siswa, siswa_guru_mapel.nilai_tugas, siswa_guru_mapel.nilai_uts, siswa_guru_mapel.nilai_uas ,siswa_guru_mapel.id_sgm  AS id_nilai_siswa
                 FROM siswa_guru_mapel
                 INNER JOIN siswa ON siswa.id_siswa = siswa_guru_mapel.id_siswa
                 WHERE id_guru_mapel = $id_guru_mapel
@@ -121,5 +130,21 @@ class Guru_model extends CI_Model {
     {
         $this->db->where('id', $id_pn);
         $this->db->update('peninjauan_nilai', ['is_read' => 1, 'is_accepted' => 0]);
+    }
+
+    public function cari_siswa($keyword, $id_guru)
+    {
+        $q = "SELECT id_sgm, siswa.nama, CONCAT(mp.nama_mapel, ' ', guru_mapel.kode_kelas) AS nama_kelas, nilai_tugas, nilai_uts, nilai_uas
+                FROM siswa_guru_mapel
+                INNER JOIN siswa ON siswa.id_siswa = siswa_guru_mapel.id_siswa
+                INNER JOIN guru_mapel ON guru_mapel.id_guru_mapel = siswa_guru_mapel.id_guru_mapel
+                INNER JOIN mata_pelajaran AS mp ON mp.id_mapel = guru_mapel.id_mapel
+                WHERE siswa_guru_mapel.id_guru_mapel IN (SELECT guru_mapel.id_guru_mapel
+                                                         FROM guru_mapel
+                                                         WHERE guru_mapel.id_guru = $id_guru)
+                AND siswa.nama LIKE '%$keyword%'
+                ORDER BY siswa.nama";
+
+        return $this->db->query($q)->result_array();
     }
 }

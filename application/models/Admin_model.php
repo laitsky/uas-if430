@@ -255,4 +255,14 @@ class Admin_model extends CI_Model
 
         $this->db->update('pengajuan_data_profil_siswa', $status, ['id' => $id_pdps]);
     }
+
+    public function cari_siswa($keyword, $sort="ASC") 
+    {
+        $q = "SELECT id_siswa, nama 
+                FROM siswa 
+                WHERE nama LIKE '%$keyword%'
+                ORDER BY nama $sort";
+
+        return $this->db->query($q)->result_array();
+    }
 }
