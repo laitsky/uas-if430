@@ -164,7 +164,7 @@ class Admin_model extends CI_Model
                 FROM `siswa`
                 INNER JOIN `pengajuan_data_profil_siswa` AS `pdps`
                 ON `siswa`.`id_siswa` = `pdps`.`id_siswa`
-                ORDER BY `tanggal_pengajuan`";
+                ORDER BY `tanggal_pengajuan` DESC";
 
         return $this->db->query($q)->result_array();
     }

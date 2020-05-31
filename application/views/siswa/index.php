@@ -1,12 +1,12 @@
-<div class="bg-gray-100 h-screen py-3">
+<div class="bg-yellow-200 h-full py-3">
     <div class="container">
         <div class="py-6">
             <?= $this->session->flashdata('message'); ?>
-            <p class="text-5xl text-center">Mata Pelajaran</p>
-            <div class="row justify-center">
+            <p class="text-5xl text-center mb-16">Mata Pelajaran</p>
+            <div class="row justify-center mb-40">
                 <?php foreach ($mapel as $m) : ?>
                     <div class="col-md-4">
-                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                        <div class="bg-white max-w-sm rounded overflow-hidden shadow-lg">
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2"><span class="block uppercase tracking-wider"><?= $m['nama_mapel']; ?></span></div>
                                 <p class="text-gray-700 text-base text-sm">

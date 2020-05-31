@@ -16,6 +16,16 @@ class Mapel_model extends CI_Model
         return $this->db->get('mata_pelajaran')->result_array();
     }
 
+    public function get_mapel_ajar($id_guru) 
+    {
+        $q = "SELECT CONCAT(nama_mapel, ' ', kode_kelas) as nama_mapel
+                FROM guru_mapel
+                INNER JOIN mata_pelajaran ON mata_pelajaran.id_mapel = guru_mapel.id_mapel
+                WHERE id_guru = $id_guru";
+
+        return $this->db->query($q)->result_array();
+    }
+
     public function get_mapel_by_id($id_mapel)
     {
         return $this->db->get_where('mata_pelajaran', ['id_mapel' => $id_mapel])->row_array();

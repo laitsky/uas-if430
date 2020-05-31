@@ -3,7 +3,7 @@ $nilai_tugas = ($detail['nilai_tugas'] == NULL) ? 0 : $detail['nilai_tugas'];
 $nilai_uts = ($detail['nilai_uts'] == NULL) ? 0 : $detail['nilai_uts'];
 $nilai_uas = ($detail['nilai_uas'] == NULL) ? 0 : $detail['nilai_uas'];
 ?>
-<div class="bg-indigo-600 h-screen py-3">
+<div class="bg-indigo-600 h-full py-3">
     <div class="container">
         <?= $this->session->flashdata('message'); ?>
     </div>

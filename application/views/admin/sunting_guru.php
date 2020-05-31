@@ -44,7 +44,9 @@
                 <input type="text" class="bg-gray-100 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="telepon" name="telepon" placeholder="Masukkan telepon..." value="<?= $guru['telp']; ?>">
                 <?= form_error('telepon', '<p class="text-red-500 text-xs italic mt-2">', '</p>'); ?>
             </div>
-            <button type="submit" class="btn btn-block btn-primary">Sunting data guru ini!</button>
+            <div class="flex justify-end">
+                <button type="submit" class="shadow bg-orange-500 hover:bg-orange-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Sunting data guru ini!</button>
+            </div>
         </form>
     </div>
 </div>

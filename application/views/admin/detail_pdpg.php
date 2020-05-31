@@ -51,7 +51,7 @@
                 <a href="<?= base_url('admin/tolak_pdpg/') . $pdp_data['id']; ?>" class="btn btn-block btn-danger">Tolak Permintaan Penggantian Data Profil</a>
             <?php else : ?>
                 <button type="submit" class="btn btn-block btn-primary" disabled>Terima Permintaan Penggantian Data Profil</button>
-                <button type="button" class="btn btn-block btn-danger" disabled>Tolak permintaan Penggantian Data Profil</button>
+                <button type="button" class="btn btn-block btn-danger" disabled>Tolak Permintaan Penggantian Data Profil</button>
             <?php endif; ?>
         </form>
     </div>

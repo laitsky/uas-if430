@@ -272,6 +272,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = "Tambah Guru Mapel";
         $data['mapel'] = $this->mapel->get_mapel_list();
+        $data['guru_mapel'] = $this->mapel->get_mapel_ajar($id_guru);
 
         $this->form_validation->set_rules('nama_mapel', 'Nama Mata Pelajaran', 'required');
 
@@ -282,7 +283,7 @@ class Admin extends CI_Controller
         } else {
             $this->mapel->tambah_guru_mapel($id_guru);
             $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Berhasil mengkaitkan guru dengan mapel!</p></div>');
-            redirect('admin/daftar_guru');
+            redirect('admin/tambah_guru_mapel/' . $id_guru);
         }
     }
 

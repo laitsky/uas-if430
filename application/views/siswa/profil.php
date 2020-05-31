@@ -5,7 +5,7 @@ if ($siswa['jenis_kelamin'] == 'L') {
     $jenis_kelamin =  "Perempuan";
 }
 ?>
-<div class="bg-orange-200 h-100 py-3">
+<div class="bg-orange-200 h-full py-3">
     <p class="text-center text-6xl pt-5 font-semibold text-gray-700">Profil Saya</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 840px;">
         <div class="container">

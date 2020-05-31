@@ -1,4 +1,4 @@
-<div class="bg-blue-400 h-screen py-3">
+<div class="bg-blue-400 h-full py-3">
     <p class="text-center text-6xl pt-5 font-semibold">Peninjauan Nilai</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 840px;">
         <form action="" method="POST">
