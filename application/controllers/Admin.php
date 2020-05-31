@@ -17,6 +17,12 @@ class Admin extends CI_Controller
 
         $data['title'] = "Halaman Admin";
         $data['unread_count'] = $this->admin->get_pdp_unread_count()['unread_count'];
+        $data['guru_c'] = $this->admin->get_guru_count();
+        $data['siswa_c'] = $this->admin->get_siswa_count();
+        $data['guru_mapel_c'] = $this->admin->get_mapel_guru_count();
+        $data['mapel_c'] = $this->admin->get_mapel_count();
+        $data['pdp_c'] = $this->admin->get_pdp_count();
+        
         $this->load->view('templates/panel_header', $data);
         $this->load->view('admin/index');
         $this->load->view('templates/panel_footer');
@@ -95,7 +101,7 @@ class Admin extends CI_Controller
         $data['guru'] = $this->admin->get_guru_by_id($id_guru);
 
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'trim|required');
         $this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
@@ -126,7 +132,7 @@ class Admin extends CI_Controller
         $data['siswa'] = $this->admin->get_siswa_by_id($id_siswa);
 
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'trim|required');
         $this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
@@ -285,6 +291,7 @@ class Admin extends CI_Controller
         $data['title'] = "Mata Pelajaran";
         $data['mapel'] = $this->mapel->get_guru_mapel();
         $data['siswa_mapel'] = $this->mapel->get_siswa_mapel($id_siswa);
+        $data['nama_siswa'] = $this->admin->get_siswa_by_id($id_siswa)['nama'];
 
         $this->form_validation->set_rules('nama_mapel', 'Nama Mata Pelajaran', 'required');
 
@@ -295,7 +302,7 @@ class Admin extends CI_Controller
         } else {
             $this->mapel->tambah_siswa_mapel($id_siswa);
             $this->session->set_flashdata('message', '<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p class="font-bold">Perhatian</p><p>Berhasil menambahkan mapel ke siswa!</p></div>');
-            redirect('admin/daftar_siswa');
+            redirect('admin/mapel/' . $id_siswa);
         }
     }
 

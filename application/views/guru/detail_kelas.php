@@ -1,4 +1,4 @@
-<div class="bg-teal-600 h-100 py-3">
+<div class="bg-teal-600 h-screen py-3">
     <p class="text-center text-gray-100 text-6xl font-semibold">Daftar Siswa</p>
     <p class="text-center text-gray-300 text-xl pb-3 block uppercase"><?= $nama_kelas; ?></p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 960px;">

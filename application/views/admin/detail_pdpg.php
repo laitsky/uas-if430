@@ -24,26 +24,26 @@
                 <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="email" name="email" placeholder="Masukkan email..." value="<?= $pdp_data['email']; ?>" readonly>
             </div>
             <div class="form-group">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="tanggal_lahir">tanggal lahir</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="tanggal_lahir">Tanggal Lahir</label>
                 <input type="date" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan tanggal lahir..." value="<?= $pdp_data['tanggal_lahir']; ?>" readonly>
             </div>
             <div class="form-group">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="tempat_lahir">tempat lahir</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="tempat_lahir">Tempat Lahir</label>
                 <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan tempat lahir..." value="<?= $pdp_data['tempat_lahir']; ?>" readonly>
             </div>
             <div class="form-group">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="alamat">alamat</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="alamat">Alamat</label>
                 <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="alamat" name="alamat" placeholder="Masukkan alamat..." value="<?= $pdp_data['alamat']; ?>" readonly>
             </div>
             <div class="form-group">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="jk">jenis kelamin</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="jk">Jenis Kelamin</label>
                 <select class="custom-select" name="jk" disabled>
                     <option value="L" <?php if ($pdp_data['jenis_kelamin'] == "L") echo "selected"; ?>>Laki-laki</option>
                     <option value="P" <?php if ($pdp_data['jenis_kelamin'] == "P") echo "selected"; ?>>Perempuan</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="telepon">telepon</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="telepon">Telepon</label>
                 <input type="text" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" id="telepon" name="telepon" placeholder="Masukkan telepon..." value="<?= $pdp_data['telp']; ?>" readonly>
             </div>
             <?php if ($pdp_data['is_read'] == 0) : ?>

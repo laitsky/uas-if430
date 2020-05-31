@@ -14,13 +14,34 @@
                 </div>
             </a>
         <?php endif; ?>
-        <div class="grid-container pt-8">
-            <div class="daftar-guru p-24 rounded shadow-lg bg-red-300">Daftar Guru</div>
-            <div class="tambah-guru p-24 rounded shadow-lg bg-orange-300">Tambah Guru</div>
-            <div class="daftar-siswa p-24 rounded shadow-lg bg-green-300">Daftar Siswa</div>
-            <div class="tambah-siswa p-24 rounded shadow-lg bg-teal-300">Tambah Siswa</div>
-            <div class="daftar-mapel-guru p-24 rounded shadow-lg bg-indigo-300">Daftar Mapel Guru</div>
-            <div class="tambah-mapel p-24 rounded shadow-lg bg-purple-300">Tambah Mapel</div>
+        <div class="grid-container pt-8 text-4xl font-semibold text-gray-700" id="admin-menu-grid" style="font-family: 'Titillium Web';">
+            <div class="daftar-guru px-8 pt-16 pb-12 rounded-md shadow-lg bg-red-300" onclick="location.href='<?= base_url('admin/daftar_guru'); ?>'">
+                <p class="pb-3">Daftar<br>Guru</p>
+                <p class="block uppercase text-xs tracking-widest-2">Jumlah guru: <?= $guru_c; ?></p>
+            </div>
+            <div class="tambah-guru px-8 pt-16 pb-12 rounded-md shadow-lg bg-orange-300" onclick="location.href='<?= base_url('admin/tambah_guru'); ?>'">
+                <p>Tambah<br>Guru</p>
+            </div>
+            <div class="daftar-siswa px-8 pt-16 pb-12 rounded-md shadow-lg bg-green-300" onclick="location.href='<?= base_url('admin/daftar_siswa'); ?>'">
+                <p class="pb-3">Daftar<br>Siswa</p>
+                <p class="block uppercase text-xs tracking-widest-2">Jumlah siswa: <?= $siswa_c; ?></p>
+            </div>
+            <div class="tambah-siswa px-8 pt-16 pb-12 rounded-md shadow-lg bg-teal-300" onclick="location.href='<?= base_url('admin/tambah_siswa'); ?>'">
+                <p>Tambah<br>Siswa</p>
+            </div>
+            <div class="tambah-mapel px-8 pt-16 pb-12 rounded-md shadow-lg bg-purple-300" onclick="location.href='<?= base_url('admin/tambah_mapel'); ?>'">
+                <p class="pb-3">Tambah<br>Mapel</p>
+                <p class="block uppercase text-xs tracking-widest-2">Jumlah mata pelajaran: <?= $mapel_c; ?></p>
+            </div>
+            <div class="daftar-mapel-guru px-8 pt-16 pb-12 rounded-md shadow-lg bg-indigo-300" onclick="location.href='<?= base_url('admin/daftar_mapel'); ?>'">
+                <p class="pb-3">Daftar<br>Mapel Guru</p>
+                <p class="block uppercase text-xs tracking-widest-2">Jumlah mapel guru: <?= $guru_mapel_c; ?></p>
+            </div>
+            <div class="peninjauan-nilai px-8 pt-16 pb-12 rounded-md shadow-lg bg-yellow-300" onclick="location.href='<?= base_url('admin/daftar_pdp'); ?>'">
+                <p class="pb-3">Pengajuan Penggantian<br>Data Profil</p>
+                <p class="block uppercase text-xs tracking-widest-2">Jumlah pengajuan: <?= $pdp_c; ?></p>
+                <p class="block uppercase text-xs tracking-widest-2">Ada <?= $unread_count; ?> permintaan baru</p>
+            </div>
         </div>
     </div>
 

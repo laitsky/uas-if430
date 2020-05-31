@@ -17,7 +17,7 @@
 </head>
 
 <body class="font-sans">
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent shadow-lg px-12">
         <a class="navbar-brand" href="<?= base_url('siswa'); ?>">
             <img src="<?= base_url('assets/img/logo3.png'); ?>" width="50" height="50" alt="Logo Sekolah" loading="lazy">
         </a>

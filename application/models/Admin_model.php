@@ -213,6 +213,16 @@ class Admin_model extends CI_Model
         return $this->db->query($q)->row_array();
     }
 
+    public function get_pdp_count()
+    {
+        $q = "SELECT (SELECT COUNT(*)
+                        FROM pengajuan_data_profil_guru) +
+                        (SELECT COUNT(*)
+                        FROM pengajuan_data_profil_siswa)
+                        AS pdp_total_count";
+
+        return $this->db->query($q)->row_array()['pdp_total_count'];
+    }
     public function terima_pdpg()
     {
         $id_guru = $this->input->post('id_guru');
@@ -288,4 +298,23 @@ class Admin_model extends CI_Model
         return $this->db->query($q)->result_array();
     }
 
+    public function get_guru_count()
+    {
+        return $this->db->count_all('guru');
+    }
+
+    public function get_siswa_count()
+    {
+        return $this->db->count_all('siswa');
+    }
+
+    public function get_mapel_guru_count()
+    {
+        return $this->db->count_all('guru_mapel');
+    }
+
+    public function get_mapel_count()
+    {
+        return $this->db->count_all('mata_pelajaran');
+    }
 }

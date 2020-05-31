@@ -2,7 +2,10 @@
     <p class="text-center text-semibold text-4xl text-white">Pencarian Siswa</p>
     <div class="container my-3 bg-white p-8 shadow-lg rounded-lg overflow-hidden" style="max-width: 720px;">
         <?php if (empty($siswa)) : ?>
-            <p class="text-center text-2xl font-gray-700 font-semibold">Hasil pencarian tidak ditemukan</p>
+            <div class="flex justify-center">
+                <img src="<?= base_url('assets/img/search_illus.svg') ?>" alt="Ilustrasi pencarian" class="img-fluid h-64 w-auto">
+            </div>
+            <p class="text-center text-2xl font-gray-700 font-semibold pt-4">Maaf, hasil pencarian tidak ditemukan!</p>
         <?php else : ?>
             <div class="table-responsive table-hover">
                 <table class="table table-dt">

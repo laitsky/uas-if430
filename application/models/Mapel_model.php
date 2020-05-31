@@ -57,7 +57,7 @@ class Mapel_model extends CI_Model
 
     public function get_guru_mapel()
     {
-        $q = "SELECT guru_mapel.id_guru_mapel, guru.nama,  mata_pelajaran.nama_mapel
+        $q = "SELECT guru_mapel.id_guru_mapel, guru.nama,  CONCAT(nama_mapel, ' ', kode_kelas) AS nama_mapel
                 FROM guru_mapel, guru, mata_pelajaran
                 WHERE guru_mapel.id_guru = guru.id_guru
                 AND guru_mapel.id_mapel = mata_pelajaran.id_mapel
@@ -68,7 +68,7 @@ class Mapel_model extends CI_Model
 
     public function get_siswa_mapel($id_siswa)
     {
-        $q = "SELECT guru.nama AS pengampu, siswa_guru_mapel.id_guru_mapel, mata_pelajaran.nama_mapel
+        $q = "SELECT guru.nama AS pengampu, siswa_guru_mapel.id_guru_mapel, CONCAT(nama_mapel, ' ', kode_kelas) AS nama_mapel
                 FROM siswa_guru_mapel, guru_mapel, mata_pelajaran, guru
                 WHERE siswa_guru_mapel.id_guru_mapel = guru_mapel.id_guru_mapel
                 AND guru_mapel.id_mapel = mata_pelajaran.id_mapel

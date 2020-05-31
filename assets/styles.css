@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
 a.a-btn {
 	-webkit-appearance: button;
 	-moz-appearance: button;
 	appearance: button;
-
 	text-decoration: none;
 	color: initial;
 }
@@ -10,37 +11,46 @@ a.a-btn {
 .grid-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
-	gap: 2em 1em;
-	grid-template-areas: "daftar-guru daftar-guru daftar-guru tambah-guru""tambah-siswa daftar-siswa daftar-siswa daftar-siswa""daftar-mapel-guru daftar-mapel-guru tambah-mapel tambah-mapel";
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	gap: 1em 1em;
+	grid-template-areas: "daftar-guru daftar-guru daftar-guru tambah-guru""tambah-siswa daftar-siswa daftar-siswa daftar-siswa""daftar-mapel-guru daftar-mapel-guru tambah-mapel tambah-mapel""daftar-mapel-guru daftar-mapel-guru peninjauan-nilai peninjauan-nilai";
 }
-
 
 .daftar-guru {
 	grid-area: daftar-guru;
 }
 
-.daftar-guru:hover {
-  filter: contrast(120%);
-  transition: ease-in-out 0.18s;
-  transform: scale(1.03);
-}
 .tambah-guru {
 	grid-area: tambah-guru;
-}
-
-.daftar-siswa {
-	grid-area: daftar-siswa;
 }
 
 .tambah-siswa {
 	grid-area: tambah-siswa;
 }
 
-.daftar-mapel-guru {
-	grid-area: daftar-mapel-guru;
+.daftar-siswa {
+	grid-area: daftar-siswa;
 }
 
 .tambah-mapel {
 	grid-area: tambah-mapel;
+}
+
+.daftar-mapel-guru {
+	grid-area: daftar-mapel-guru;
+}
+
+.peninjauan-nilai {
+	grid-area: peninjauan-nilai;
+}
+
+#admin-menu-grid>div:hover {
+	filter: contrast(120%);
+	transition: all 0.25s ease-in-out;
+	transform: scale(1.03);
+	cursor: pointer;
+}
+
+.tracking-widest-2 {
+	letter-spacing: 0.3em;
 }
