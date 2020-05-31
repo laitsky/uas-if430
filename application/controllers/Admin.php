@@ -128,7 +128,7 @@ class Admin extends CI_Controller
 
     public function sunting_siswa($id_siswa)
     {
-        $data['title'] = "Sunting Profil Guru";
+        $data['title'] = "Sunting Profil Siswa";
         $data['siswa'] = $this->admin->get_siswa_by_id($id_siswa);
 
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
