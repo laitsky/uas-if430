@@ -11,10 +11,10 @@
                     </div>
                 </a>
             <?php endif; ?>
-            <p class="text-4xl tracking-wide font-semibold text-center pb-4 mb-16">Kelas yang kamu ajar:</p>
-            <div class="row justify-center mb-40">
+            <p class="text-4xl text-center pb-4 mb-16 block uppercase tracking-wider font-thin pt-4">Kelas yang kamu ajar:</p>
+            <div class="row justify-center mb-40 mx-auto">
                 <?php foreach ($kelas as $k) : ?>
-                    <div class="col-md-4">
+                    <div class="col-md-4 py-2">
                         <div class="bg-white max-w-sm rounded overflow-hidden shadow-lg">
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2"><span class="block uppercase tracking-wider"><?= $k['nama_mapel']; ?></span></div>

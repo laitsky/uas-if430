@@ -3,7 +3,7 @@ $has_complete_nilai = true;
 $nilai_akhir = (0.4 * $nilai['nilai_tugas']) + (0.3 * $nilai['nilai_uts']) + (0.3 * $nilai['nilai_uas']);
 $id_sgm = $this->uri->segment($this->uri->total_segments());
 ?>
-<div class="bg-green-200 h-screen py-3">
+<div class="bg-green-200 h-full py-3">
     <div class="container">
         <div class="container">
             <?= $this->session->flashdata('message'); ?>
@@ -16,7 +16,7 @@ $id_sgm = $this->uri->segment($this->uri->total_segments());
             <div class="row mb-6">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <p class="block text-2xl uppercase tracking-wide text-md text-gray-500 font-bold md:text-center mb-1 md:mb-0">Nilai Akhir:</p>
+                        <p class="block text-2xl uppercase tracking-wide text-md text-gray-600 font-bold md:text-center mb-1 md:mb-0">Nilai Akhir:</p>
                         <p class="font-semibold tracking-wide text-xl block md:text-center">
                             <?php
                             if ($has_complete_nilai) :
@@ -30,10 +30,11 @@ $id_sgm = $this->uri->segment($this->uri->total_segments());
                 </div>
             </div>
             <div class="row py-3">
-                <div class="col-md-4">
+                <div class="col-md-4 mt-3">
                     <div class="text-center">
-                        <p class="block text-2xl uppercase tracking-wide text-md text-gray-500 font-bold md:text-center mb-1 md:mb-0">Nilai Tugas:</p>
-                        <p class="font-semibold tracking-wide text-xl block md:text-center">
+                        <p class="block text-2xl uppercase tracking-wide text-md text-gray-600 font-bold md:text-center mb-1 md:mb-0">Nilai Tugas: </p>
+                        <p class="text-xs text-gray-600">40%</p>
+                        <p class="font-semibold tracking-wide text-xl mt-2 block md:text-center">
                             <?php
                             if ($nilai['nilai_tugas'] == NULL) :
                                 echo "-";
@@ -45,10 +46,11 @@ $id_sgm = $this->uri->segment($this->uri->total_segments());
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mt-3">
                     <div class="text-center">
-                        <p class="block text-2xl uppercase tracking-wide text-md text-gray-500 font-bold md:text-center mb-1 md:mb-0">Nilai Tugas:</p>
-                        <p class="font-semibold tracking-wide text-xl block md:text-center">
+                        <p class="block text-2xl uppercase tracking-wide text-md text-gray-600 font-bold md:text-center mb-1 md:mb-0">Nilai UTS:</p>
+                        <p class="text-xs text-gray-600">30%</p>
+                        <p class="font-semibold tracking-wide text-xl mt-2 block md:text-center">
                             <?php
                             if ($nilai['nilai_uts'] == NULL) :
                                 echo "-";
@@ -60,10 +62,11 @@ $id_sgm = $this->uri->segment($this->uri->total_segments());
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mt-3">
                     <div class="text-center">
-                        <p class="block text-2xl uppercase tracking-wide text-md text-gray-500 font-bold md:text-center mb-1 md:mb-0">Nilai Tugas:</p>
-                        <p class="font-semibold tracking-wide text-xl block md:text-center">
+                        <p class="block text-2xl uppercase tracking-wide text-md text-gray-600 font-bold md:text-center mb-1 md:mb-0">Nilai UAS:</p>
+                        <p class="text-xs text-gray-600">30%</p>
+                        <p class="font-semibold tracking-wide text-xl mt-2 block md:text-center">
                             <?php
                             if ($nilai['nilai_uas'] == NULL) :
                                 echo "-";

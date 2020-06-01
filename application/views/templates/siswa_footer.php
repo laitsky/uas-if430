@@ -1,7 +1,7 @@
-<div class="bg-gray-300 h-64 font-serif shadow-lg" style="overflow-y: hidden;">
+<div class="bg-gray-300 h-full font-serif shadow-lg py-4" style="overflow-x: hidden;">
     <div class="row h-100 text-gray-800 mt-n4">
         <div class="col-md-4 my-auto mt-n3">
-            <div class="row mt-">
+            <div class="row mt-n3">
                 <div class="col-md-12">
                     <div class="flex justify-center">
                         <img src="<?= base_url('assets/img/logo1.png') ?>" alt="Logo Sekolah" class="img-fluid">
@@ -31,7 +31,7 @@
                     <a href="#"><i class="lab la-twitter-square"></i>Twitter</a>
                 </div>
             </div>
-            <p class="pt-4 font-sans-serif text-sm font-semibold">Copyright &copy; 2020, Sekolah Nusantara. All Rights Reserved.</p>
+            <p class="pt-4 pb-4 font-sans-serif text-sm font-semibold">Copyright &copy; 2020, Sekolah Nusantara. All Rights Reserved.</p>
         </div>
         <div class="col-md-4 text-center my-auto font-mono">
             <p class="text-base font-semibold uppercase block tracking-wider">Anggota Kelompok Perancang<br>Sekolah Nusantara:</p>

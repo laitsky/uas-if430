@@ -2,10 +2,10 @@
     <div class="container">
         <div class="py-6">
             <?= $this->session->flashdata('message'); ?>
-            <p class="text-5xl text-center mb-16">Mata Pelajaran</p>
-            <div class="row justify-center mb-40">
+            <p class="text-5xl text-center mb-16 block uppercase tracking-wider font-thin pt-4">Mata Pelajaran</p>
+            <div class="row justify-center mb-40 mx-auto">
                 <?php foreach ($mapel as $m) : ?>
-                    <div class="col-md-4">
+                    <div class="col-md-4 py-2">
                         <div class="bg-white max-w-sm rounded overflow-hidden shadow-lg">
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2"><span class="block uppercase tracking-wider"><?= $m['nama_mapel']; ?></span></div>

@@ -5,13 +5,13 @@
         <div class="table-responsive table-hover">
             <table class="table table-dt">
                 <thead>
-                    <tr>
-                        <th scope="col" class="text-center">#</th>
-                        <th scope="col" class="text-center">Nama Siswa</th>
-                        <th scope="col" class="text-center">Tugas</th>
-                        <th scope="col" class="text-center">UTS</th>
-                        <th scope="col" class="text-center">UAS</th>
-                        <th scope="col" class="text-center">Aksi</th>
+                    <tr class="text-center">
+                        <th scope="col" class="align-middle">#</th>
+                        <th scope="col" class="align-middle">Nama Siswa</th>
+                        <th scope="col" class="align-middle">Tugas <span class="text-xs text-gray-600"><br>40%</span></th>
+                        <th scope="col" class="align-middle">UTS <span class="text-xs text-gray-600"><br>30%</span></th>
+                        <th scope="col" class="align-middle">UAS <span class="text-xs text-gray-600"><br>30%</span></th>
+                        <th scope="col" class="align-middle">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
