@@ -103,7 +103,7 @@ class Guru_model extends CI_Model {
                 WHERE pn.id_guru_mapel IN (SELECT guru_mapel.id_guru_mapel
                                             FROM guru_mapel
                                             WHERE guru_mapel.id_guru = $id_guru)
-                ORDER BY pn.tanggal_pengajuan";
+                ORDER BY pn.tanggal_pengajuan DESC";
 
         return $this->db->query($q)->result_array();
     }
